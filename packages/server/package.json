@@ -1,6 +1,6 @@
 {
   "name": "@notion-node/server",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "一个简单的koa+typescript+typeorm的起手式",
   "tags": [
     "orm",

@@ -1,6 +1,6 @@
 {
   "name": "@notion-node/api",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,12 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^2.6.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "typescript": "^3.5.3",
+    "@types/lodash": "^4.14.136",
     "@types/node-fetch": "^2.5.0",
-    "@types/lodash": "^4.14.136"
+    "typescript": "^3.5.3"
   }
 }
