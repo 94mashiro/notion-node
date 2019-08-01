@@ -1,0 +1,11 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.16.4",
+    "husky": "^3.0.2"
+  },
+  "scripts": {
+    "commit": "npx git-cz"
+  }
+}

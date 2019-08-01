@@ -1,0 +1,14 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:prettier/recommended",
+  ],
+  "plugins": [
+    "simple-import-sort"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {}
+  },
+}
