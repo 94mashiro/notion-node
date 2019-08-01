@@ -1,10 +1,10 @@
-import NotionClient from 'src/lib/notion/client'
+import NotionClient from '../../../api/src/client'
 import notionConfig from 'src/config/notion'
 import { find, get } from 'lodash'
 import {
   CollectionFilterQuery,
   CollectionSortQuery,
-} from 'src/lib/notion/queryCollection'
+} from '../../../api/src/queryCollection'
 
 const { token, collectionId, collectionViewId, tagProperties } = notionConfig
 const client = new NotionClient(token)
