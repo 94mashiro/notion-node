@@ -45,5 +45,6 @@
     "ts-node": "^8.1.0",
     "tsconfig-paths": "^3.8.0",
     "typescript": "^3.4.5"
-  }
+  },
+  "gitHead": "4e1f319a7a8149651d0974d06bce6d4c4dc003e2"
 }

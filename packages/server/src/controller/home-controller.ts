@@ -11,8 +11,8 @@ export default class NotionController {
     ctx.body = await NotionServices.getCollectionIdByCollectionName(name)
   }
 
-  // static async getPageById(ctx) {
-  //   const id = ctx.params.id
-  //   ctx.body = await NotionServices.findPostByLinkOrID(id)
-  // }
+  static async getPageById(ctx) {
+    const id = ctx.params.id
+    ctx.body = await NotionServices.getPostDetailByPostId(id)
+  }
 }

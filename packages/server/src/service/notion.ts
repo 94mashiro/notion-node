@@ -30,7 +30,7 @@ const getPostList = async () => {
     filter: filterQuery,
     sort: sortQuery,
   })
-  return queryCollection.blocks
+  return queryCollection.raw
 }
 
 type getCollectionIdByCollectionNameResult = {
@@ -56,4 +56,26 @@ const getCollectionIdByCollectionName = async (
   }
 }
 
-export default { getPostList, getCollectionIdByCollectionName }
+const getPostDetailByPostId = async (id: string) => {
+  const pageChunk = await client.LoadPageChunk({
+    pageId: id,
+    chunkNumber: 0,
+    limit: 10000,
+    verticalColumns: false,
+    cursor: { stack: [] },
+  })
+  const content = pageChunk.content
+  const meta = pageChunk.meta
+  const raw = pageChunk.raw
+  return {
+    meta,
+    content,
+    raw,
+  }
+}
+
+export default {
+  getPostList,
+  getCollectionIdByCollectionName,
+  getPostDetailByPostId,
+}

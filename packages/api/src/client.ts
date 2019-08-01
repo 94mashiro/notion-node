@@ -5,6 +5,8 @@ import QueryCollection, {
 } from './queryCollection'
 import { GetUserContentResponse } from './getUserContent'
 import { merge } from 'lodash'
+import { LoadPageChunkRequest, LoadPageChunkResponse, PageChunk } from './loadPageChunk'
+import { GetRecordValuesRequest, GetRecordValuesResponse } from './getRecordValues';
 
 const BASE_URL = 'https://www.notion.so/api/v3'
 
@@ -31,6 +33,7 @@ class NotionClient {
         console.log(err)
       })
   }
+
   QueryCollection = async (
     payload: QueryCollectionRequest
   ): Promise<QueryCollection> => {
@@ -84,6 +87,26 @@ class NotionClient {
 
   LoadUserContent = async (): Promise<GetUserContentResponse> => {
     const res = await this._post<GetUserContentResponse>('/loadUserContent', {})
+    return res
+  }
+
+  LoadPageChunk = async (
+    payload: LoadPageChunkRequest
+  ): Promise<PageChunk> => {
+    const res = await this._post<LoadPageChunkResponse>(
+      '/loadPageChunk',
+      payload
+    )
+    return new PageChunk(res)
+  }
+
+  RecordValues = async (
+    payload: GetRecordValuesRequest
+  ): Promise<GetRecordValuesResponse> => {
+    const res = await this._post<GetRecordValuesResponse>(
+      '/getRecordValues',
+      payload
+    )
     return res
   }
 }

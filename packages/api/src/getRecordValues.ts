@@ -1,37 +1,18 @@
 import { CollectionView, Collection } from './loadPageChunk'
 import { InlineBlock } from './inlineBlock'
 
-// type getRecordValuesRequest struct {
-// 	Requests []getRecordValuesRequestInner `json:"requests"`
-// }
-
 export type GetRecordValuesRequest = {
   requests: GetRecordValuesRequestInner[]
 }
-
-// type getRecordValuesRequestInner struct {
-// 	Table string `json:"table"`
-// 	ID    string `json:"id"`
-// }
 
 export type GetRecordValuesRequestInner = {
   table: string
   id: string
 }
 
-// type GetRecordValuesResponse struct {
-// 	Results []*BlockWithRole `json:"results"`
-// 	RawJSON []byte           `json:"-"`
-// }
-
 export type GetRecordValuesResponse = {
   results: BlockWithRole[]
 }
-
-// type BlockWithRole struct {
-// 	Role  string `json:"role"`
-// 	Value *Block `json:"value"`
-// }
 
 export type BlockWithRole = {
   role: string
@@ -39,6 +20,8 @@ export type BlockWithRole = {
 }
 
 export type BlockPageType = number
+
+export type BlockPropertyType = Array<string | Array<Array<string>>>
 
 export type Block = {
   id: string
@@ -57,7 +40,7 @@ export type Block = {
   parent_id: string
   parent_table: string
   permissions?: Permission[]
-  properties?: Map<string, object>
+  properties?: Record<string, BlockPropertyType>
   type: string
   version: number
   view_ids?: string[]

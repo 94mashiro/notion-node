@@ -1,6 +1,6 @@
 import { RecordMap } from './loadPageChunk'
 import { BlockWithRole } from './getRecordValues'
-import { find } from 'lodash'
+import { find, isNil } from 'lodash'
 
 export interface QueryCollectionRequest {
   collectionID: string
@@ -70,22 +70,24 @@ export type AggregateResult = {
 }
 
 class QueryCollection {
-  collection: QueryCollectionResponse
-  constructor(collection: QueryCollectionResponse) {
-    this.collection = collection
+  private _raw: QueryCollectionResponse
+  constructor(raw: QueryCollectionResponse) {
+    this._raw = raw
   }
 
-  get rawData() {
-    return this.collection
+  get raw() {
+    return this._raw
   }
 
-  get blocks(): BlockWithRole[] {
-    return this.collection.result.blockIds.map(blockId => {
-      return find(
-        this.collection.recordMap.block,
-        item => item.value.id === blockId
-      )
-    })
+  get blocks() {
+    return this._raw.result.blockIds
+      .map(blockId => {
+        return find(
+          this._raw.recordMap.block,
+          item => item.value.id === blockId
+        )
+      })
+      .filter(item => !isNil(item))
   }
 }
 

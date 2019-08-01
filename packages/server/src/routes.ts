@@ -6,11 +6,11 @@ export default [
     method: 'get',
     action: NotionController.getPostList,
   },
-  // {
-  //   path: '/blog/:id',
-  //   method: 'get',
-  //   action: HomeController.getPageById,
-  // },
+  {
+    path: '/blog/:id',
+    method: 'get',
+    action: NotionController.getPageById,
+  },
   {
     path: '/blog/collection/name/:name',
     method: 'get',

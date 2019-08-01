@@ -17,5 +17,6 @@
     "@types/lodash": "^4.14.136",
     "@types/node-fetch": "^2.5.0",
     "typescript": "^3.5.3"
-  }
+  },
+  "gitHead": "4e1f319a7a8149651d0974d06bce6d4c4dc003e2"
 }
