@@ -5,8 +5,15 @@ import QueryCollection, {
 } from './queryCollection'
 import { GetUserContentResponse } from './getUserContent'
 import { merge } from 'lodash'
-import { LoadPageChunkRequest, LoadPageChunkResponse, PageChunk } from './loadPageChunk'
-import { GetRecordValuesRequest, GetRecordValuesResponse } from './getRecordValues';
+import {
+  LoadPageChunkRequest,
+  LoadPageChunkResponse,
+  PageChunk,
+} from './loadPageChunk'
+import {
+  GetRecordValuesRequest,
+  GetRecordValuesResponse,
+} from './getRecordValues'
 
 const BASE_URL = 'https://www.notion.so/api/v3'
 
@@ -90,9 +97,7 @@ class NotionClient {
     return res
   }
 
-  LoadPageChunk = async (
-    payload: LoadPageChunkRequest
-  ): Promise<PageChunk> => {
+  LoadPageChunk = async (payload: LoadPageChunkRequest): Promise<PageChunk> => {
     const res = await this._post<LoadPageChunkResponse>(
       '/loadPageChunk',
       payload

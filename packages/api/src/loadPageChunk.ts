@@ -1,4 +1,9 @@
-import { Permission, BlockWithRole, TableProperty, Block } from './getRecordValues'
+import {
+  Permission,
+  BlockWithRole,
+  TableProperty,
+  Block,
+} from './getRecordValues'
 import { Table } from './page'
 import { map, head, get, find } from 'lodash'
 
@@ -193,7 +198,9 @@ export class PageChunk {
 
   private _getBlockById(id: string) {
     const blocks = this._raw.recordMap.block
-    const targetBlock = get(find(blocks, block => block.value.id === id), ['value'])
+    const targetBlock = get(find(blocks, block => block.value.id === id), [
+      'value',
+    ])
     return targetBlock
   }
 

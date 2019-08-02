@@ -2,17 +2,31 @@ import NotionServices from '../service/notion'
 
 export default class NotionController {
   static async getPostList(ctx) {
-    ctx.body = await NotionServices.getPostList()
+    const data = await NotionServices.getPostList()
+    ctx.body = {
+      code: 200,
+      msg: 'OK',
+      data,
+    }
   }
 
   static async getCollectionByName(ctx) {
     const { name } = ctx.params
-    console.log(name)
-    ctx.body = await NotionServices.getCollectionIdByCollectionName(name)
+    const data = await NotionServices.getCollectionIdByCollectionName(name)
+    ctx.body = {
+      code: 200,
+      msg: 'OK',
+      data,
+    }
   }
 
   static async getPageById(ctx) {
     const id = ctx.params.id
-    ctx.body = await NotionServices.getPostDetailByPostId(id)
+    const data = await NotionServices.getPostDetailByPostId(id)
+    ctx.body = {
+      code: 200,
+      msg: 'OK',
+      data,
+    }
   }
 }
