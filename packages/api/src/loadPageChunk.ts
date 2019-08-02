@@ -179,7 +179,7 @@ export class PageChunk {
     this._raw = raw
   }
 
-  getUserById(id: string): User {
+  getUserById(id: string) {
     return get(this._raw.recordMap.notion_user, [id, 'value'])
   }
 
@@ -191,7 +191,7 @@ export class PageChunk {
     return head(map(this._raw.recordMap.block))
   }
 
-  private _getBlockById(id: string): Block | undefined {
+  private _getBlockById(id: string) {
     const blocks = this._raw.recordMap.block
     const targetBlock = get(find(blocks, block => block.value.id === id), ['value'])
     return targetBlock
