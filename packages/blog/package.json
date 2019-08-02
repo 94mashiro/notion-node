@@ -1,6 +1,6 @@
 {
   "name": "@notion-node/blog",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.0",
@@ -10,9 +10,9 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/node": "^12.6.9",
     "@types/react": "^16.8.24",
     "@types/react-dom": "^16.8.5",
-    "@types/node": "^12.6.9",
     "typescript": "^3.5.3"
   },
   "scripts": {
