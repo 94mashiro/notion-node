@@ -2,7 +2,7 @@ import {
   Permission,
   BlockWithRole,
   TableProperty,
-  Block,
+  // Block,
 } from './getRecordValues'
 import { Table } from './page'
 import { map, head, get, find } from 'lodash'
@@ -96,6 +96,8 @@ export type CollectionWithRole = {
   value: Collection
 }
 
+export type CollectionSchema = Record<string, CollectionColumnInfo>
+
 export type Collection = {
   alive: boolean
   format: CollectionFormat
@@ -103,7 +105,7 @@ export type Collection = {
   name: string[][]
   parent_id: string
   parent_table: string
-  schema: Record<string, CollectionColumnInfo>
+  schema: CollectionSchema
   version: number
 }
 
@@ -215,7 +217,8 @@ export class PageChunk {
       name: schemas[key].name,
       type: schemas[key].type,
       value: value,
-    }))
+    })) as any
+    //TODO: fix it
   }
 
   get createdBy() {

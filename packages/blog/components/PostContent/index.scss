@@ -1,0 +1,71 @@
+.post-content-wrapper {
+  padding: 30px 35px 35px;
+  font-family: "Lora", "source-han-serif-sc", serif;
+  line-height: 1.5em;
+  p {
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  code {
+    color: #7a422c;
+    background: rgba(159,86,58,.07)!important;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: fira mono,cousine,Monaco,Menlo,source code pro,monospace;
+  }
+  pre code {
+    color: inherit;
+    font-size: inherit;
+    font-size: 0.75rem;
+  }
+  pre * {
+    background: 0 0 !important;
+    font-family: fira mono,cousine,Monaco,Menlo,source code pro,monospace;
+  }
+  h1 {
+    font-size: 1.875rem;
+    line-height: 2.375rem;
+  }
+  h2 {
+    font-size: 1.6875rem;
+    line-height: 2.1875rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  h4 {
+    font-size: 21px;
+    line-height: 1.8125rem;
+  }
+  h5 {
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+  }
+  h6 {
+    font-size: 0.9375rem;
+    line-height: 1.4375rem;
+  }
+  blockquote {
+    padding: 10px 20px;
+    border-left: 3px solid rgba(159,86,58,.7);
+    color: #7a422c;
+    background: rgba(159,86,58,.05);
+    margin: 0 0 1rem;
+    white-space: pre-wrap;
+  }
+  hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+  }
+  pre {
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 1.3125rem !important;
+  }
+}

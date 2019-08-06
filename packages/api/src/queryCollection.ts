@@ -1,6 +1,6 @@
 import { RecordMap } from './loadPageChunk'
-import { BlockWithRole } from './getRecordValues'
-import { find, isNil } from 'lodash'
+import { find, isNil, head, map, get } from 'lodash'
+import { parseProperties } from './helper'
 
 export interface QueryCollectionRequest {
   collectionID: string
@@ -75,11 +75,19 @@ class QueryCollection {
     this._raw = raw
   }
 
+  private get _queryCollectionBlock() {
+    return head(map(this._raw.recordMap.collection))
+  }
+
+  private get _pageBlock() {
+    return head(map(this._raw.recordMap.block))
+  }
+
   get raw() {
     return this._raw
   }
 
-  get blocks() {
+  get page() {
     return this._raw.result.blockIds
       .map(blockId => {
         return find(
@@ -88,6 +96,10 @@ class QueryCollection {
         )
       })
       .filter(item => !isNil(item))
+  }
+
+  get schema() {
+    return get(this._queryCollectionBlock, ['value', 'schema']) || {}
   }
 }
 

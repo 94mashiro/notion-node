@@ -1,0 +1,33 @@
+.post-header-wrapper {
+  width: 100%;
+  margin-top: -20px;
+  background: no-repeat center;
+  background-size: cover;
+  position: relative;
+  padding-top: 140px;
+  .post-title {
+    padding: 80px 35px 30px 35px;
+    font-size: 30px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 3rem;
+    // background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 100%);
+    // background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 100%);
+    // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#c6000000', GradientType=0);
+    color: #fff;
+    font-family: "Lora", "source-han-serif-sc", serif;
+    .post-meta {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      display: flex;
+      align-items: center;
+      user-select: none;
+      i {
+        vertical-align: middle;
+        font-size: 0.875rem;
+        margin-right: 4px;
+      }
+    }
+  }
+}

@@ -21,7 +21,9 @@ export type BlockWithRole = {
 
 export type BlockPageType = number
 
-export type BlockPropertyType = Array<string | Array<Array<string>>>
+export type BlockPropertyType = Array<string | string[][]>
+
+export type BlockProperties = Record<string, BlockPropertyType[]>
 
 export type Block = {
   id: string
@@ -40,7 +42,7 @@ export type Block = {
   parent_id: string
   parent_table: string
   permissions?: Permission[]
-  properties?: Record<string, BlockPropertyType>
+  properties?: BlockProperties
   type: string
   version: number
   view_ids?: string[]

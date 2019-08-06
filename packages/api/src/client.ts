@@ -3,7 +3,7 @@ import QueryCollection, {
   QueryCollectionResponse,
   QueryCollectionRequest,
 } from './queryCollection'
-import { GetUserContentResponse } from './getUserContent'
+import { GetUserContentResponse, UserContent } from './getUserContent'
 import { merge } from 'lodash'
 import {
   LoadPageChunkRequest,
@@ -14,6 +14,10 @@ import {
   GetRecordValuesRequest,
   GetRecordValuesResponse,
 } from './getRecordValues'
+import {
+  GetSignedFileUrlsRequest,
+  GetSignedFileUrlsResponse,
+} from './getSignedFileUrls'
 
 const BASE_URL = 'https://www.notion.so/api/v3'
 
@@ -41,7 +45,7 @@ class NotionClient {
       })
   }
 
-  QueryCollection = async (
+  GetQueryCollection = async (
     payload: QueryCollectionRequest
   ): Promise<QueryCollection> => {
     const {
@@ -92,9 +96,9 @@ class NotionClient {
     return new QueryCollection(res)
   }
 
-  LoadUserContent = async (): Promise<GetUserContentResponse> => {
+  LoadUserContent = async (): Promise<UserContent> => {
     const res = await this._post<GetUserContentResponse>('/loadUserContent', {})
-    return res
+    return new UserContent(res)
   }
 
   LoadPageChunk = async (payload: LoadPageChunkRequest): Promise<PageChunk> => {
@@ -105,13 +109,24 @@ class NotionClient {
     return new PageChunk(res)
   }
 
-  RecordValues = async (
+  GetRecordValues = async (
     payload: GetRecordValuesRequest
   ): Promise<GetRecordValuesResponse> => {
     const res = await this._post<GetRecordValuesResponse>(
       '/getRecordValues',
       payload
     )
+    return res
+  }
+
+  GetSignedFileUrls = async (
+    payload: GetSignedFileUrlsRequest
+  ): Promise<GetSignedFileUrlsResponse> => {
+    const res = await this._post<GetSignedFileUrlsResponse>(
+      '/getSignedFileUrls',
+      payload
+    )
+    console.log(res)
     return res
   }
 }

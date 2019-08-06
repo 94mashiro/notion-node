@@ -21,7 +21,7 @@ service.defaults.validateStatus = status => {
   return status === 200
 }
 
-export const get = (url: string, params?: any) => {
+function get<T>(url: string, params?: any): Promise<APIResponse<T>> {
   return new Promise((resolve, reject) => {
     service
       .get(url, {
@@ -35,3 +35,23 @@ export const get = (url: string, params?: any) => {
       })
   })
 }
+
+function post<T>(
+  url: string,
+  body?: Record<string, any>
+): Promise<APIResponse<T>> {
+  return new Promise((resolve, reject) => {
+    service
+      .post(url, body)
+      .then(res => resolve(res.data))
+      .catch(err => reject(err.data))
+  })
+}
+
+export type APIResponse<T> = {
+  code: number
+  msg: string
+  data?: T
+}
+
+export { get, post }

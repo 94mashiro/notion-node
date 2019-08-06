@@ -18,6 +18,7 @@
     "prettier": "prettier --config ./.prettierrc --write 'src/**/*.ts'"
   },
   "dependencies": {
+    "@koa/cors": "^2.2.3",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
@@ -46,5 +47,5 @@
     "tsconfig-paths": "^3.8.0",
     "typescript": "^3.4.5"
   },
-  "gitHead": "a3e984a04232c3b4a85a49420e5c332577aa3111"
+  "gitHead": "ba7e3cb2ad6086f947552c48e0100b4a5d5b9174"
 }

@@ -1,0 +1,33 @@
+body {
+  background-color: #fcfcfc;
+  padding: 0;
+  margin: 0;
+  font-family: "Lora", "source-han-serif-sc", serif;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  color: black;
+  font-weight: 400;
+}
+
+.layout {
+  display: flex;
+  .main-section {
+    margin-left: 25vw;
+    min-height: 100vh;
+    flex: 1 800px;
+    max-width: 800px;
+    background-color: #fff;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.12);
+  }
+  .extra-section {
+    flex: 0;
+  }
+}
+
+a {
+  color: #9f563a;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
