@@ -26,12 +26,14 @@ class LayoutSider extends React.PureComponent {
           <span>Proudly powered by Notion </span>
           <br />
           <span>Theme </span>
-          <a href="#">Journal.</a>
+          <a href="https://github.com/SumiMakito/hexo-theme-journal/">
+            Journal.
+          </a>
           <span> by </span>
-          <a href="#">Makito</a>
+          <a href="https://mak1t0.cc/">Makito</a>
           <br />
           <span>© 2019 </span>
-          <a href="#">Mashiro's Insider</a>
+          <a href="https://blog.mashiro.wang">Mashiro's Insider</a>
         </div>
       </aside>
     )

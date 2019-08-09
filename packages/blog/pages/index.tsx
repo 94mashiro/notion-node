@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { NextPage } from 'next'
 import { getBlogArticles, getNotionUsers } from '../service/api'
 import { get, mapValues } from 'lodash'
 import { Block } from '../../api/src/getRecordValues'
@@ -11,8 +10,14 @@ import {
 } from '../../api/src/loadPageChunk'
 import ArchieveList from '../components/ArchieveList'
 import Layout from '../components/Layout'
+import isBot from 'isbot'
 
 type IPageProps = {
+  data?: any
+  ssr: boolean
+}
+
+type IPageState = {
   data?: any
 }
 
@@ -64,32 +69,65 @@ const parseArticleList = (
   })
 }
 
-const Page: NextPage<IPageProps> = ({ data }) => (
-  <Layout>
-    <ArchieveList list={data} />
-  </Layout>
-)
-
-Page.defaultProps = {
-  data: [],
-}
-
-Page.getInitialProps = async () => {
-  try {
-    const postsRes = await getBlogArticles()
-    const usersRes = await getNotionUsers()
-    const page = get(postsRes, ['data', 'page']) || []
-    const schema = get(postsRes, ['data', 'schema']) || {}
-    const users = get(usersRes, ['data']) || {}
-    const data = parseArticleList(page, schema, users)
-    return {
-      data,
+class Page extends React.PureComponent<IPageProps, IPageState> {
+  static async getInitialProps({ req }) {
+    const ua = get(req, ['headers', 'user-agent'])
+    const ssr = isBot(ua)
+    try {
+      if (ssr) {
+        const postsRes = await getBlogArticles()
+        const usersRes = await getNotionUsers()
+        const page = get(postsRes, ['data', 'page']) || []
+        const schema = get(postsRes, ['data', 'schema']) || {}
+        const users = get(usersRes, ['data']) || {}
+        const data = parseArticleList(page, schema, users)
+        return {
+          data,
+          ssr,
+        }
+      } else {
+        return {
+          ssr,
+        }
+      }
+    } catch (err) {
+      return {
+        data: {},
+        schema: {},
+      }
     }
-  } catch (err) {
-    return {
-      data: {},
-      schema: {},
+  }
+  constructor(props: IPageProps) {
+    super(props)
+    this.state = {}
+  }
+  async componentDidMount() {
+    if (!this.props.ssr) {
+      const postsRes = await getBlogArticles()
+      const usersRes = await getNotionUsers()
+      const page = get(postsRes, ['data', 'page']) || []
+      const schema = get(postsRes, ['data', 'schema']) || {}
+      const users = get(usersRes, ['data']) || {}
+      const data = parseArticleList(page, schema, users)
+      this.setState({
+        data,
+      })
     }
+  }
+  static defaultProps = {
+    data: {},
+  }
+  render() {
+    const { data, ssr } = this.props
+    return ssr ? (
+      <Layout>
+        <ArchieveList list={data} />
+      </Layout>
+    ) : (
+      <Layout>
+        {this.state.data && <ArchieveList list={this.state.data} />}
+      </Layout>
+    )
   }
 }
 

@@ -6,6 +6,7 @@ import NotionImage from '../Image'
 import NotionCode from '../Code'
 import NotionGist from '../Gist'
 import NotionQuote from '../Quote'
+import NotionCallout from '../Callout'
 
 type IComponentProps = {
   block: Block
@@ -34,6 +35,9 @@ class NotionBlock extends React.PureComponent<IComponentProps> {
     }
     if (block.type === 'divider') {
       return <hr />
+    }
+    if (block.type === 'callout') {
+      return <NotionCallout block={block} />
     }
     return null
   }

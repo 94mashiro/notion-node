@@ -45,10 +45,9 @@ class PostHeader extends React.PureComponent<IComponentProps, IComponentState> {
     )
     const postTags = (get(
       find(postProperties, property => property.name === 'Tags'),
-      ['value', 0, 0]
-    ) as string)
-      .split(',')
-      .join(', ')
+      ['value', 0, 0],
+      ''
+    ) as string).split(',')
     return (
       <div
         className={cx('post-header-wrapper')}
@@ -62,8 +61,12 @@ class PostHeader extends React.PureComponent<IComponentProps, IComponentState> {
               {dayjs(postCreatedTime).format('YYYY-MM-DD HH:mm')}
             </time>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <i className="material-icons">label</i>
-            <span>{postTags}</span>
+            {postTags.length > 1 && (
+              <React.Fragment>
+                <i className="material-icons">label</i>
+                <span>{postTags.join(', ')}</span>
+              </React.Fragment>
+            )}
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { get, find, isNil } from 'lodash'
 import NotionNumberedList from '../NumberedList'
 import NotionBulletedList from '../BulletedList'
 import { PostBlocksContext } from '../../../pages/post/[pid]'
+import NotionTodoList from '../TodoList'
 
 type IComponentProps = {
   blocks: (Block | string)[]
@@ -15,7 +16,6 @@ class NotionListBlock extends React.PureComponent<IComponentProps> {
       .map(block => {
         if (typeof block === 'string') {
           const targetBlock = find(contents, content => content.id === block)
-          console.log(contents, block, targetBlock)
           return targetBlock
         } else {
           return block
@@ -35,6 +35,8 @@ class NotionListBlock extends React.PureComponent<IComponentProps> {
             return <NotionNumberedList blocks={convertedBlocks} />
           } else if (listBlockType === 'bulleted_list') {
             return <NotionBulletedList blocks={convertedBlocks} />
+          } else if (listBlockType === 'to_do') {
+            return <NotionTodoList blocks={convertedBlocks} />
           } else {
             return null
           }

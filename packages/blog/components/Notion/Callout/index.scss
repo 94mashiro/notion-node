@@ -1,0 +1,25 @@
+.notion-callout {
+  padding: 16px 16px 16px 12px;
+  display: flex;
+  width: 100%;
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(55, 53, 47, 0.09);
+  color: rgb(55, 53, 47);
+  margin: 0 0 1rem;
+  &.no-border {
+    border: 0;
+  }
+  .icon {
+    font-size: 20px;
+  }
+  .content {
+    max-width: 100%;
+    width: 100%;
+    white-space: pre-wrap;
+    word-break: break-word;
+    caret-color: rgb(55, 53, 47);
+    margin-left: 8px;
+  }
+}

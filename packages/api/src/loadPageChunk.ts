@@ -214,8 +214,8 @@ export class PageChunk {
     const schemas = get(this._queryCollectionBlock, ['value', 'schema']) || {}
     const pageProperties = get(this._pageBlock, ['value', 'properties']) || {}
     return map(pageProperties, (value, key) => ({
-      name: schemas[key].name,
-      type: schemas[key].type,
+      name: get(schemas, [key, 'name']),
+      type: get(schemas, [key, 'type']),
       value: value,
     })) as any
     //TODO: fix it

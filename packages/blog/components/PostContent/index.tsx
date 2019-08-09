@@ -15,7 +15,7 @@ class PostContent extends React.PureComponent<IComponentProps> {
     content: [],
   }
   convertContentBlocks = (blocks: Block[]) => {
-    const LIST_TYPE = ['numbered_list', 'bulleted_list']
+    const LIST_TYPE = ['numbered_list', 'bulleted_list', 'to_do']
     let listArray: Block[] = []
     const isListBlock = (block?: Block) => {
       if (isNil(block)) {

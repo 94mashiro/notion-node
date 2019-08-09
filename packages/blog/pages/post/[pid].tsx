@@ -11,40 +11,83 @@ import { GetPostDetailByPostIdResponse } from '../../../server/src/service/notio
 import PostContent from '../../components/PostContent'
 import { Block } from '../../../api/src/getRecordValues'
 import PostComment from '../../components/PostComment'
+import isBot from 'isbot'
 
 type IPageProps = WithRouterProps & {
   data: GetPostDetailByPostIdResponse
+  ssr: boolean
+  pid: string
+}
+
+type IPageState = {
+  data?: GetPostDetailByPostIdResponse
 }
 
 export const PostBlocksContext = React.createContext<Block[]>([])
 
-class PostDetailPage extends React.PureComponent<IPageProps> {
+class PostDetailPage extends React.PureComponent<IPageProps, IPageState> {
   static async getInitialProps(ctx) {
     const pid = get(ctx, ['query', 'pid'])
-    const { data } = await getPostById(pid)
-    return {
-      data,
+    const ua = get(ctx, ['req', 'headers', 'user-agent'])
+    const ssr = isBot(ua)
+    if (ssr) {
+      const { data } = await getPostById(pid)
+      return {
+        data,
+        ssr,
+      }
+    } else {
+      return {
+        ssr,
+        pid,
+      }
+    }
+  }
+
+  constructor(props: IPageProps) {
+    super(props)
+    this.state = {}
+  }
+
+  async componentDidMount() {
+    const { ssr, pid } = this.props
+    if (!ssr) {
+      const { data } = await getPostById(pid)
+      this.setState({
+        data,
+      })
     }
   }
 
   render() {
     const cx = classNames.bind(styles)
-    const { meta, content, raw } = this.props.data
-    const completeBlocks = map(raw.recordMap.block, item => item.value)
+    const { ssr } = this.props
+    // const { meta, content, raw } = ssr ? this.props.data : this.state.data || {}
+    const data = ssr ? this.props.data : this.state.data
+    const meta = get(data, ['meta'])
+    const content = get(data, ['content'])
+    const raw = get(data, ['raw'])
+    const completeBlocks = map(
+      get(raw, ['recordMap', 'block']),
+      item => item.value
+    )
+    const loading = !ssr && !this.state.data
     return (
       <PostBlocksContext.Provider value={completeBlocks}>
         <Layout>
-          <article>
-            <header className={cx('post-header')}>
-              <PostHeader meta={meta} />
-            </header>
-            <div className={cx('post-main')}>
-              <PostContent content={content} />
-            </div>
-            <footer className={cx('post-footer')}>
-              <PostComment />
-            </footer>
-          </article>
+          {!loading && (
+            <article>
+              <header className={cx('post-header')}>
+                <PostHeader meta={meta} />
+              </header>
+              <div className={cx('post-main')}>
+                <PostContent content={content} />
+              </div>
+              <footer className={cx('post-footer')}>
+                <PostComment />
+              </footer>
+            </article>
+          )}
         </Layout>
       </PostBlocksContext.Provider>
     )

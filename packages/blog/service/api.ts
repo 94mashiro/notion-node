@@ -1,5 +1,8 @@
 import { get, post } from './http'
-import { GetPostListData } from '../../server/src/service/notion'
+import {
+  GetPostListData,
+  GetPostDetailByPostIdResponse,
+} from '../../server/src/service/notion'
 import { UserWithRole } from '../../api/src/loadPageChunk'
 import { GetSignedFileUrlsResponse } from '../../api/src/getSignedFileUrls'
 
@@ -14,7 +17,7 @@ export const getNotionUsers = async () => {
 }
 
 export const getPostById = async (id: string) => {
-  const res = await get(`/api/post/${id}`)
+  const res = await get<GetPostDetailByPostIdResponse>(`/api/post/${id}`)
   return res
 }
 
