@@ -3,7 +3,7 @@ import Axios from 'axios'
 const service = Axios.create({
   timeout: 60000,
   responseType: 'json',
-  baseURL: 'http://localhost:8080/',
+  baseURL: 'https://notionapi.mashiro.wang/',
 })
 
 service.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
