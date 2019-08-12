@@ -5,7 +5,9 @@ module.exports = {
   apps: [
     {
       name,
-      script: path.resolve(__dirname, './dist/index.js'),
+      interpreter: path.resolve(__dirname, './node_modules/.bin/ts-node'),
+      interpreter_args: '-r tsconfig-paths/register',
+      script: path.resolve(__dirname, './src/index.ts'),
       instances: require('os').cpus().length,
       autorestart: true,
       watch: true,

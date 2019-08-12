@@ -167,6 +167,7 @@ export type Reminder = {
 }
 
 export type PageChunkMeta = Partial<{
+  id: string
   property: PageChunkProperty[]
   createdBy: User
   createdTime: number
@@ -250,8 +251,13 @@ export class PageChunk {
     })
   }
 
+  get id() {
+    return get(this._pageBlock, ['value', 'id'])
+  }
+
   get meta(): PageChunkMeta {
     return {
+      id: this.id,
       property: this.property,
       createdBy: this.createdBy,
       createdTime: this.createdTime,

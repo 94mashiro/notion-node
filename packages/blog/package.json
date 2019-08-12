@@ -8,6 +8,7 @@
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "dayjs": "^1.8.15",
+    "disqus-react": "^1.0.6",
     "isbot": "^2.4.0",
     "lodash": "^4.17.15",
     "modern-normalize": "^0.5.0",
@@ -35,5 +36,5 @@
     "build": "next build",
     "start": "next start"
   },
-  "gitHead": "e719cbbf65be0f87a4734dde59afe615ee4af7a8"
+  "gitHead": "5ca923d21895ad9decd581039e3b768ac85d3746"
 }

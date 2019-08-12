@@ -84,7 +84,7 @@ class PostDetailPage extends React.PureComponent<IPageProps, IPageState> {
                 <PostContent content={content} />
               </div>
               <footer className={cx('post-footer')}>
-                <PostComment />
+                <PostComment meta={meta} />
               </footer>
             </article>
           )}

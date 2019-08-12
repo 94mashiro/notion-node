@@ -18,5 +18,5 @@
     "@types/node-fetch": "^2.5.0",
     "typescript": "^3.5.3"
   },
-  "gitHead": "e719cbbf65be0f87a4734dde59afe615ee4af7a8"
+  "gitHead": "5ca923d21895ad9decd581039e3b768ac85d3746"
 }
