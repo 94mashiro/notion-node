@@ -26,11 +26,14 @@ class Layout extends React.PureComponent {
     return (
       <section className={cx('layout')}>
         <Head>
+          <meta charSet="utf-8" />
+          <meta http-equiv="x-ua-compatible" content="ie=edge"></meta>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          ></meta>
           <title>Mashiro's Blog</title>
-          <link
-            href="https://fonts.googleapis.com/css?family=Lora|Merriweather|Montserrat|Material+Icons|Fira+Mono&display=swap"
-            rel="stylesheet"
-          />
+          <meta name="description" content="Personal blog by Mashiro." />
         </Head>
         <LayoutSider />
         <section className={cx('main-section')}>{this.props.children}</section>
