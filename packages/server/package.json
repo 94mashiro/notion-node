@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@koa/cors": "^2.2.3",
+    "ioredis": "^4.14.0",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-redis-cache": "^3.0.2",
@@ -28,6 +29,7 @@
     "validator": "^11.1.0"
   },
   "devDependencies": {
+    "@types/ioredis": "^4.0.14",
     "@types/koa": "^2.0.48",
     "@types/koa-bodyparser": "^4.2.2",
     "@types/koa-router": "^7.0.40",
@@ -48,5 +50,5 @@
     "tsconfig-paths": "^3.8.0",
     "typescript": "^3.4.5"
   },
-  "gitHead": "5c2b7e58c36ccc9650bdd89dec8bb7d1aa129d2c"
+  "gitHead": "8db8c28e3b22905c165fc521858e9ebd4a1e664f"
 }
