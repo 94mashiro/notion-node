@@ -1,6 +1,6 @@
 {
   "name": "@notion-node/blog",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "license": "MIT",
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
