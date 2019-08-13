@@ -36,5 +36,5 @@
     "build": "next build",
     "start": "next start"
   },
-  "gitHead": "8db8c28e3b22905c165fc521858e9ebd4a1e664f"
+  "gitHead": "d905047456b11167daa59cc07a36012ea8a43336"
 }

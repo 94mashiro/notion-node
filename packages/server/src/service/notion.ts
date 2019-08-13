@@ -53,7 +53,7 @@ const getPostList = async (): Promise<GetPostListData> => {
     await redis.set(CACHE_KEY, JSON.stringify(payload))
     return payload
   } else {
-    return JSON.parse(CACHE_KEY)
+    return JSON.parse(cache)
   }
 }
 
