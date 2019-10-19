@@ -20,7 +20,7 @@ Demo： https://blog.mashiro.wang/
 
 
 
-##使用方法
+## 使用方法
 
 1. yarn instlall
 2. lerna bootstrap
