@@ -24,7 +24,7 @@
     "koa-bodyparser": "^4.2.1",
     "koa-redis-cache": "^3.0.2",
     "koa-router": "^7.4.0",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.19",
     "node-fetch": "^2.6.0",
     "validator": "^11.1.0"
   },
