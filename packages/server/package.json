@@ -26,7 +26,7 @@
     "koa-router": "^7.4.0",
     "lodash": "^4.17.14",
     "node-fetch": "^2.6.0",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@types/ioredis": "^4.0.14",
